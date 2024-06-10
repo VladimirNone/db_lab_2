@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Join Tables Sector and Objects</title>
+</head>
+<body>
+    <h1>Joined Tables Sector and Objects</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Sector ID</th>
+                <th>Coordinates</th>
+                <th>Light Intensity</th>
+                <th>Foreign Objects</th>
+                <th>Num Sky Objects</th>
+                <th>Num Undefined Objects</th>
+                <th>Num Defined Objects</th>
+                <th>Notes</th>
+                <th>Object ID</th>
+                <th>Type</th>
+                <th>Determination Accuracy</th>
+                <th>Quantity</th>
+                <th>Time</th>
+                <th>Date</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in results %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+                <td>{{ row[4] }}</td>
+                <td>{{ row[5] }}</td>
+                <td>{{ row[6] }}</td>
+                <td>{{ row[7] }}</td>
+                <td>{{ row[8] }}</td>
+                <td>{{ row[9] }}</td>
+                <td>{{ row[10] }}</td>
+                <td>{{ row[11] }}</td>
+                <td>{{ row[12] }}</td>
+                <td>{{ row[13] }}</td>
+                <td>{{ row[14] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

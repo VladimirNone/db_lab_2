@@ -1,0 +1,147 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+    <h2>Sectors</h2>
+    <a href="{{ url_for('add_entity', entity='sector') }}">Add Sector</a>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Coordinates</th>
+            <th>Light Intensity</th>
+            <th>Foreign Objects</th>
+            <th>Num Sky Objects</th>
+            <th>Num Undefined Objects</th>
+            <th>Num Defined Objects</th>
+            <th>Notes</th>
+            <th>Actions</th>
+        </tr>
+        {% for sector in sectors %}
+        <tr>
+            <td>{{ sector.id }}</td>
+            <td>{{ sector.coordinates }}</td>
+            <td>{{ sector.light_intensity }}</td>
+            <td>{{ sector.foreign_objects }}</td>
+            <td>{{ sector.num_sky_objects }}</td>
+            <td>{{ sector.num_undefined_objects }}</td>
+            <td>{{ sector.num_defined_objects }}</td>
+            <td>{{ sector.notes }}</td>
+            <td>
+                <a href="{{ url_for('edit_entity', entity='sector', id=sector.id) }}">Edit</a>
+                <a href="{{ url_for('delete_entity', entity='sector', id=sector.id) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Objects</h2>
+    <a href="{{ url_for('add_entity', entity='objects') }}">Add Object</a>
+    <table border="1">
+        <tr>
+            <th>Object ID</th>
+            <th>Type</th>
+            <th>Determination Accuracy</th>
+            <th>Quantity</th>
+            <th>Time</th>
+            <th>Date</th>
+            <th>Note</th>
+            <th>Actions</th>
+        </tr>
+        {% for obj in objects %}
+        <tr>
+            <td>{{ obj.object_id }}</td>
+            <td>{{ obj.type }}</td>
+            <td>{{ obj.determination_accuracy }}</td>
+            <td>{{ obj.quantity }}</td>
+            <td>{{ obj.time }}</td>
+            <td>{{ obj.date }}</td>
+            <td>{{ obj.note }}</td>
+            <td>
+                <a href="{{ url_for('edit_entity', entity='objects', id=obj.object_id) }}">Edit</a>
+                <a href="{{ url_for('delete_entity', entity='objects', id=obj.object_id) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{{ url_for('join_tables') }}"><h2>View Join Tables</h2></a>
+
+    <h2>Natural Objects</h2>
+    <a href="{{ url_for('add_entity', entity='natural_objects') }}">Add Natural Object</a>
+    <table border="1">
+        <tr>
+            <th>Object ID</th>
+            <th>Type</th>
+            <th>Galaxy</th>
+            <th>Accuracy</th>
+            <th>Light Flow</th>
+            <th>Coupled Objects</th>
+            <th>Note</th>
+            <th>Actions</th>
+        </tr>
+        {% for nat_obj in natural_objects %}
+        <tr>
+            <td>{{ nat_obj.object_id }}</td>
+            <td>{{ nat_obj.type }}</td>
+            <td>{{ nat_obj.galaxy }}</td>
+            <td>{{ nat_obj.accuracy }}</td>
+            <td>{{ nat_obj.light_flux }}</td>
+            <td>{{ nat_obj.coupled_objects }}</td>
+            <td>{{ nat_obj.note }}</td>
+            <td>
+                <a href="{{ url_for('edit_entity', entity='natural_objects', id=nat_obj.object_id) }}">Edit</a>
+                <a href="{{ url_for('delete_entity', entity='natural_objects', id=nat_obj.object_id) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Positions</h2>
+    <a href="{{ url_for('add_entity', entity='position') }}">Add Position</a>
+    <table border="1">
+        <tr>
+            <th>Position ID</th>
+            <th>Earth Position</th>
+            <th>Sun Position</th>
+            <th>Moon Position</th>
+            <th>Actions</th>
+        </tr>
+        {% for pos in positions %}
+        <tr>
+            <td>{{ pos.position_id }}</td>
+            <td>{{ pos.earth_position }}</td>
+            <td>{{ pos.sun_position }}</td>
+            <td>{{ pos.moon_position }}</td>
+            <td>
+                <a href="{{ url_for('edit_entity', entity='position', id=pos.position_id) }}">Edit</a>
+                <a href="{{ url_for('delete_entity', entity='position', id=pos.position_id) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Relations</h2>
+    <a href="{{ url_for('add_entity', entity='relations') }}">Add Relation</a>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Sector ID</th>
+            <th>Object ID</th>
+            <th>Natural Object ID</th>
+            <th>Position ID</th>
+            <th>Actions</th>
+        </tr>
+        {% for rel in relations %}
+        <tr>
+            <td>{{ rel.relation_id }}</td>
+            <td>{{ rel.sector_id }}</td>
+            <td>{{ rel.object_id }}</td>
+            <td>{{ rel.natural_object_id }}</td>
+            <td>{{ rel.position_id }}</td>
+            <td>
+                <a href="{{ url_for('edit_entity', entity='relations', id=rel.relation_id) }}">Edit</a>
+                <a href="{{ url_for('delete_entity', entity='relations', id=rel.relation_id) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

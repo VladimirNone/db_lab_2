@@ -1,0 +1,15 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+    <h2>{{ entity_name }} {{ 'Add' if action == 'add' else 'Edit' }}</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {% for field in form %}
+            <p>
+                {{ field.label }} ({{ field.description }})<br>
+                {{ field(size=32) }}<br>
+            </p>
+        {% endfor %}
+        <p><input type="submit" value="{{ 'Add' if action == 'add' else 'Update' }}"></p>
+    </form>
+{% endblock %}
